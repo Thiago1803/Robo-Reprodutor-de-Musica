@@ -13,12 +13,23 @@ def tocarMusica(path_musica):
     pygame.mixer.music.play()
 
     # Mantenha o programa em execução para que o áudio continue tocando
-    input("Pressione Enter para parar o áudio...")
+    nome = input("Digite o que quer...")
+    while(nome != "parar"):
+        if nome == "pausar":
+            pausarMusica()
+        elif nome == "continuar":
+            continuarMusica()
+        nome = input("igite o que quer...")
 
+
+    encerrarMusica()
+
+
+def encerrarMusica():
     # Pare o áudio quando o usuário pressionar Enter
     pygame.mixer.music.stop()
 
-    # Encerre o Pygame
+    # Encerra o Pygame
     pygame.quit()
 
 
