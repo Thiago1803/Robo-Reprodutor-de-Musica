@@ -21,7 +21,7 @@ def speech_to_text():
             arrText = text.split(' ')
             print("Você falou:", arrText)
 
-            if "desligar" in arrText:
+            if "robô" in arrText and "desligar" in arrText:
                 pararPrograma = True
                 
             menuSemMusica(arrText)
