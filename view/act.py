@@ -19,7 +19,7 @@ def tocarMusica(path_musica):
             pausarMusica()
         elif nome == "continuar":
             continuarMusica()
-        nome = input("igite o que quer...")
+        nome = input("Digite o que quer...")
 
 
     encerrarMusica()

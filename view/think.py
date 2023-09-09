@@ -22,7 +22,7 @@ def menuSemMusica(textoEntendido):
             else:
                 falarMensagens("Nao entendi o que você pediu, fale outra vez!")
         else:
-            falarMensagens ("Desligando...")
+            falarMensagens ("Até mais...")
     else:
         falarMensagens ("Está tentando falar comigo? Me chame pelo nome!")
 

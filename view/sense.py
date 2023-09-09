@@ -20,10 +20,11 @@ def speech_to_text():
             text = recognizer.recognize_google(audio, language='pt-BR')
             arrText = text.split(' ')
             print("Você falou:", arrText)
+
             if "desligar" in arrText:
                 pararPrograma = True
-            else:
-                menuSemMusica(arrText)
+                
+            menuSemMusica(arrText)
             
         except sr.UnknownValueError:
             menuSemMusica("Nao entendi o que foi dito")
@@ -34,7 +35,6 @@ def speech_to_text():
 
 
 def musicaToca():
-    pararPrograma = False
     # Initialize the recognizer
     recognizer = sr.Recognizer()
 
