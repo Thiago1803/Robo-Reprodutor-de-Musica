@@ -1,6 +1,5 @@
 import speech_recognition as sr
 from view.think_while_music_play import menuMusicaTocando
-from view.think_while_music_play import menuParaMensagens
 
 pararMusica = False
 
