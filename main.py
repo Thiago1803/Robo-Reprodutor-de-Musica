@@ -1,5 +1,5 @@
-from view.sense import speech_to_text
-from view.act import falarMensagens
+from view.sense_without_music import ouvirSemMusica
+from view.act_talk_with_us import falarMensagens
 
-falarMensagens("Olá meu chefe, com qual música iremos requebrar hoje?")
-speech_to_text()
+falarMensagens("Oi humano, com qual música iremos requebrar hoje?")
+ouvirSemMusica()
