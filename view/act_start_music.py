@@ -1,5 +1,6 @@
 import pygame
 from view.sense_while_music_play import ouvirComMusica
+from view.act_while_music_play import encerrarMusica
 
 
 def tocarMusica(path_musica):
@@ -16,5 +17,6 @@ def tocarMusica(path_musica):
     while pygame.mixer.music.get_busy():
         ouvirComMusica()
     
+    encerrarMusica()
 
 #def dancar():
