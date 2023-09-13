@@ -1,5 +1,6 @@
 import pygame
 from view.sense_while_music_play import ouvirComMusica
+from view.act_while_music_play import encerrarMusica
 
 
 def tocarMusica(path_musica):
@@ -13,7 +14,12 @@ def tocarMusica(path_musica):
     pygame.mixer.music.play()
 
     # Se o canal de reprodução estiver tocando algo, vai continuar nesse loop
-    while pygame.mixer.music.get_busy():
-        ouvirComMusica()
+    ouvirComMusica()
+
+    if pygame.mixer.music.get_busy():
+        encerrarMusica()
+    
+    # Encerra o Pygame
+    pygame.quit()
 
 #def dancar():
