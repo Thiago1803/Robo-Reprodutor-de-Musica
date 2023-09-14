@@ -10,22 +10,18 @@ pasta = "/home/thiago/Área de Trabalho/TRABALHOIA/musicas"
 #MENU COM TRATAMENTO PARA OS COMANDOS QUANDO NÃO ESTA TOCANDO NENHUMA MUSICA
 #A primeira palavra que foi ouvida será o nome do robô e a segunda será o comando
 def menuSemMusica(textoEntendido):
-    comando = textoEntendido[1].lower()
-    
-    if(comando not in "desligar"):
+    if("desligar" not in textoEntendido and "Desligar" not in textoEntendido):
         # Busca uma determinada musica para reproduzi-la
-        if(comando in "tocar"):
-            textoEntendido = textoEntendido[2:] #ignora "papel" e "tocar" da lista, sobrando nome do cantor/banda e musica
+        if("tocar" in textoEntendido or "Tocar" in textoEntendido):
+            textoEntendido = textoEntendido[1:] #ignora "tocar" da lista, sobrando nome do cantor/banda e musica
             buscarMusica(textoEntendido)
 
         # Reproduz a playlist inteira
-        elif(comando in "reproduzir"):
+        elif("reproduzir" in textoEntendido or "Reproduzir" in textoEntendido):
             reproduzirPlaylist()
 
         else:
-            menuParaMensagens("Nao entendi o que você pediu, fale outra vez!")
-    else:
-        menuParaMensagens("Bom descanso, volte depois para fazermos outra festa!")
+            menuParaMensagens("Nao entendi o que você pediu!")
 
 
 

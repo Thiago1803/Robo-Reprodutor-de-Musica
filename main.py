@@ -1,5 +1,6 @@
-from view.sense_without_music import ouvirSemMusica
-from view.act_talk_with_us import falarMensagens
+from view.sense_without_music import menuSentir
+import beepy as beep
 
-falarMensagens("Oi humano, com qual música iremos requebrar hoje?")
-ouvirSemMusica()
+#3 desligar 6 ligar 1 ouvir
+beep.beep(6)
+menuSentir()

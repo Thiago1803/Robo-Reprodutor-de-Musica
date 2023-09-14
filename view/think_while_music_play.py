@@ -6,36 +6,31 @@ from view.act_talk_with_us import *
 musicaPausada = False
 
 def menuMusicaTocando(textoEntendido):
-    comando = textoEntendido[1].lower()
     global musicaPausada
     
-    if(comando not in "parar"):
+    if("parar" not in textoEntendido and "Parar" not in textoEntendido):
         # Se uma musica estiver tocando, ela será pausada
-        if(comando in "pausar"):
+        if("pausar" in textoEntendido or "Pausar" in textoEntendido):
             if musicaPausada == False:
                 musicaPausada = True
                 pausar()
         
         # Se uma musica foi pausada, ela voltara a tocar
-        elif(comando in "continuar"):
+        elif("continuar" in textoEntendido or "Continuar" in textoEntendido):
             if musicaPausada == True:
                 musicaPausada = False
                 continuar()
                 
         else:
-            if musicaPausada == False:
-                musicaPausada = True
-                pausar()
-
             print("Nao entendi o que você pediu, fale outra vez!")
-            
-            if musicaPausada == True:
-                musicaPausada = False
-                continuar()
+
     else:
         musicaPausada = False
         pararMusica()
 
+
+def volume(volume):
+    alterarVolume(volume)
 
 def menuParaMensagens(mensagem):
     falarMensagens(mensagem)
