@@ -18,7 +18,7 @@ def menuSentir():
             with open ('./model/dataset.json', 'r') as file:
                 dataset = json.loads(file.read())
                 for palavra in comando:
-                    if palavra in dataset['comandos']:
+                    if palavra in dataset['comandosSemMusica']:
                         controle = 1
 
                     
