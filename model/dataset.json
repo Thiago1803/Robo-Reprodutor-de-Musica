@@ -1,4 +1,4 @@
 {
-    "comandosMusicaTocando":["parar", "pausar", "continuar"],
-    "comandosSemMusica":["desligar", "tocar", "reproduzir"]
+    "comandosMusicaTocando":["parar", "pausar", "continuar", "Parar", "Pausar", "Continuar"],
+    "comandosSemMusica":["desligar", "tocar", "reproduzir", "Desligar", "Tocar", "Reproduzir"]
 }
