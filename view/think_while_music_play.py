@@ -1,5 +1,4 @@
 from view.act_while_music_play import *
-from view.act_talk_with_us import *
 
 #MENU COM TRATAMENTO PARA OS COMANDOS QUANDO ESTÁ TOCANDO ALGUMA MUSICA
 #A primeira palavra que foi ouvida será o nome do robô e a segunda será o comando
@@ -20,9 +19,6 @@ def menuMusicaTocando(textoEntendido):
             if musicaPausada == True:
                 musicaPausada = False
                 continuar()
-                
-        else:
-            print("Nao entendi o que você pediu, fale outra vez!")
 
     else:
         musicaPausada = False
@@ -31,9 +27,6 @@ def menuMusicaTocando(textoEntendido):
 
 def volume(volume):
     alterarVolume(volume)
-
-def menuParaMensagens(mensagem):
-    falarMensagens(mensagem)
 
 def pausar():
     pausarMusica()

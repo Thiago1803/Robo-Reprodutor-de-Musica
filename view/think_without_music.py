@@ -20,9 +20,6 @@ def menuSemMusica(textoEntendido):
         elif("reproduzir" in textoEntendido or "Reproduzir" in textoEntendido):
             reproduzirPlaylist()
 
-        else:
-            menuParaMensagens("Nao entendi o que você pediu!")
-
 
 
 # Envia mensagens de erro ou de despedida para o robô falar
