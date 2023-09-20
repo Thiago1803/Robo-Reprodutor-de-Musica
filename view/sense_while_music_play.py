@@ -1,8 +1,8 @@
 import beepy as beep
 import json
 from view.sense_speech_to_text import speech_to_text
-from view.think_while_music_play import menuMusicaTocando
-from view.think_while_music_play import volume
+from controller.think_while_music_play import menuMusicaTocando
+from controller.think_while_music_play import volume
 
 def menuSentir():
     comando = []
