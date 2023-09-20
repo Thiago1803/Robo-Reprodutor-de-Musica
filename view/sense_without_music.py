@@ -1,6 +1,6 @@
 import beepy as beep
 import json
-from view.think_without_music import menuSemMusica
+from controller.think_without_music import menuSemMusica
 from view.act_talk_with_us import falarMensagens
 from view.sense_speech_to_text import speech_to_text
 

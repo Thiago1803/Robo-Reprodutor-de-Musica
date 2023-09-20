@@ -3,7 +3,7 @@ from view.act_start_music import *
 from view.act_talk_with_us import *
 
 # Pasta do projeto com as musicas
-pasta = "/home/thiago/Área de Trabalho/TRABALHOIA/musicas"
+pasta = "/home/thiago/Área de Trabalho/TRABALHOIA/model/musicas"
 
 
 
