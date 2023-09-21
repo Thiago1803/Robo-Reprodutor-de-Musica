@@ -3,7 +3,7 @@ from view.act_start_music import *
 from view.act_talk_with_us import *
 
 # Pasta do projeto com as musicas
-pasta = "C:/Users/User/Desktop/TRABALHO IA/TRABALHOIA/model/musicas"
+pasta = "/home/thiago/Área de Trabalho/TRABALHOIA/model/musicas"
 
 
 
@@ -14,7 +14,9 @@ def menuSemMusica(textoEntendido):
         # Busca uma determinada musica para reproduzi-la
         if("tocar" in textoEntendido or "Tocar" in textoEntendido):
             textoEntendido = textoEntendido[1:] #ignora "tocar" da lista, sobrando nome do cantor/banda e musica
-            buscarMusica(textoEntendido)
+            separator = '' #indica como irá separar as palavras da lista, no caso é sem espaço
+            musica = [separator.join(textoEntendido)] #concatena todas as palavras da lista
+            buscarMusica(musica)
 
         # Reproduz a playlist inteira
         elif("reproduzir" in textoEntendido or "Reproduzir" in textoEntendido):

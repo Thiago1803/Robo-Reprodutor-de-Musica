@@ -1,5 +1,6 @@
 import beepy as beep
 import json
+import pygame
 from view.sense_speech_to_text import speech_to_text
 from controller.think_while_music_play import menuMusicaTocando
 from controller.think_while_music_play import volume
@@ -7,7 +8,7 @@ from controller.think_while_music_play import volume
 def menuSentir():
     comando = []
 
-    while("parar" not in comando and "Parar" not in comando):
+    while(("parar" not in comando and "Parar" not in comando) and pygame.mixer.music.get_busy()):
         nomeRobo = speech_to_text("Fale algo, estou ouvindo com a musica tocando...")
         if("beto" in nomeRobo or "Beto" in nomeRobo):
             volume(0.2)
