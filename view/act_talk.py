@@ -6,7 +6,7 @@ def falarMensagens(mensagem):
     # Cria um objeto gTTS com o texto desejado e com idioma pt-br
     tts = gTTS(text=mensagem, lang='pt-br')
 
-    pastaDestino = '/home/thiago/Área de Trabalho/TRABALHOIA/model/audioTemporario'
+    pastaDestino = 'C:/Users/ricar/Documents/cpp/periodo 6/ia/TRABALHOIA/model/audioTemporario'
     if not os.path.exists(pastaDestino):
         os.makedirs(pastaDestino)
 

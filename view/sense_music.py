@@ -10,7 +10,7 @@ def speech_to_text(mensagem):
 
     # Capture audio from the microphone
     with sr.Microphone() as source:
-        print(sr.Microphone.list_microphone_names())
+        #print(sr.Microphone.list_microphone_names())
         print(mensagem)
         recognizer.adjust_for_ambient_noise(source)  # Adjust for noise
         audio = recognizer.listen(source)
@@ -37,10 +37,11 @@ def menuSentir():
     comando = []
 
     while("desligar" not in comando and "Desligar" not in comando):
-        nomeRobo = speech_to_text("Fale algo, estou ouvindo Beto")
+        nomeRobo = speech_to_text("Fale algo, estou ouvindo... Beto")
         if("beto" in nomeRobo or "Beto" in nomeRobo):
             if(verificarMusicaTocando() or verificarMusicaPausada()):
                 volume(0.2)
+                print("beep")
                 beep.beep(1)
 
                 comando = speech_to_text("Fale algo, estou ouvindo com a musica tocando...")
@@ -54,6 +55,7 @@ def menuSentir():
 
                         
                 if((len(comando)==0) or (controle==0)):
+                    print("beep")
                     beep.beep(3)
                 else:
                     menuMusicaTocando(comando)
@@ -61,6 +63,7 @@ def menuSentir():
                 volume(1.0)
 
             else:
+                print("beep")
                 beep.beep(1)
 
                 comando = speech_to_text("Fale algo, estou ouvindo sem musica tocando...")
@@ -74,6 +77,7 @@ def menuSentir():
 
                         
                 if((len(comando)==0) or (controle==0)):
+                    print("beep")
                     beep.beep(3)
                 else:
                     menuSemMusica(comando)

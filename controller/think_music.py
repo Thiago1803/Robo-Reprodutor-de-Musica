@@ -5,7 +5,7 @@ from view.act_music import *
 from view.act_talk import *
 
 # Pasta do projeto com as musicas
-pasta = "/home/thiago/Área de Trabalho/TRABALHOIA/model/musicas"
+pasta = "C:/Users/ricar/Documents/cpp/periodo 6/ia/TRABALHOIA/model/musicas"
 musicaPausada = False
 
 
