@@ -38,7 +38,7 @@ def menuSentir():
 
     while("desligar" not in comando and "Desligar" not in comando):
         nomeRobo = speech_to_text("Fale algo, estou ouvindo... Beto")
-        if("beto" in nomeRobo or "Beto" in nomeRobo):
+        if("beto" in nomeRobo or "Beto" in nomeRobo or "bento" in nomeRobo or "Bento" in nomeRobo):
             if(verificarMusicaTocando() or verificarMusicaPausada()):
                 volume(0.2)
                 print("beep")
