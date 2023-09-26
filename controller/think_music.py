@@ -5,11 +5,7 @@ from view.act_music import *
 from view.act_talk import *
 
 # Pasta do projeto com as musicas
-pastaPlaylistInfantil = "C:/Users/User/Desktop/TRABALHO IA/TRABALHOIA/model/playlist infantil"
-pastaPlaylistFesta = "C:/Users/User/Desktop/TRABALHO IA/TRABALHOIA/model/playlist festa"
-pastaPlaylistTriste = "C:/Users/User/Desktop/TRABALHO IA/TRABALHOIA/model/playlist triste/titanic.mpeg"
-pastaMusicas = "C:/Users/User/Desktop/TRABALHO IA/TRABALHOIA/model/musicas"
-pastaPlaylistAtual = None
+pasta = "/home/thiago/Área de Trabalho/TRABALHOIA/model/musicas"
 musicaPausada = False
 
 
