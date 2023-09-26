@@ -115,7 +115,7 @@ def menuMusicaTocando(textoEntendido):
                 time.sleep(0.2)
                 musicaPausada = False
         
-        elif("pular" not in textoEntendido and "Pular" not in textoEntendido):
+        elif("pular" in textoEntendido or "Pular" in textoEntendido):
                if musicaPausada == False:
                 pularMusica(pastaPlaylistAtual)
 
