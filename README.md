@@ -5,8 +5,9 @@ O robô foi desenvolvido com a premissa de ajudar os pais no entretenimento de s
 ## Arquitetura de Software
 
 <p align="center">
-  <img src="https://github.com/Thiago1803/TRABALHOIA/assets/64339671/9e028efc-87ec-434b-9df5-df006ef40f18" alt="logo" width="180" height="450">
+  <img src="https://github.com/Thiago1803/TRABALHOIA/assets/64339671/dd93831c-94e9-4de7-a2b4-3f036c223774" alt="logo" width="180" height="420">
 </p>
+
 
 ## Diagrama de classes
 
