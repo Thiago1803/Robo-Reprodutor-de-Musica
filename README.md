@@ -1,6 +1,9 @@
 # Trabalho de Inteligência Artificial
 
-O robô foi desenvolvido com a premissa de ajudar os pais no entretenimento de seus filhos. O robô possuí a habilidade de conversar com o usuário e pode aceitar pedidos para reprodução de músicas.
+O robô “Eva” foi desenvolvido com a premissa de ajudar os pais no entretenimento de seus filhos por meio de músicas, uma vez que foi comprovado pela neurociência que a música é capaz de regular a vontade de comer, o sono e o estado de ânimo, além de produzir a sensação de satisfação, felicidade, relaxamento e bem-estar. 
+
+Com isso, planejamos nosso robô de forma que tenha a habilidade de ouvir o usuário, o qual poderá pedir uma música em específico para ser tocada, uma playlist ou então todas as músicas baixadas. A partir disso, o robô começará a reproduzir o que foi pedido, caso seja encontrado.
+
 
 ## Arquitetura de Software
 
@@ -62,3 +65,16 @@ A biblioteca "speech_recognition" é uma biblioteca Python que fornece uma inter
 ### OS
 A biblioteca os é uma biblioteca padrão do Python que fornece uma interface para interagir com o sistema operacional subjacente no qual o Python está sendo executado. Ela permite que você execute várias tarefas relacionadas ao sistema, como navegar pelo sistema de arquivos, manipular caminhos de arquivos, acessar variáveis de ambiente, executar comandos do sistema, criar diretórios e muito mais. É uma biblioteca fundamental para realizar operações de baixo nível relacionadas ao sistema operacional.
 
+### Beepy
+A biblioteca beepy é um módulo da linguagem Python que permite aos usuários reproduzir facilmente sons de notificação no Linux, OSX e Windows. Funciona apenas no Python 3 e requer a instalação do pacote simpleaudio. Ela foi usada no projeto para emitir os “apitos” toda vez que o usuário tentar falar com o robô, com a finalidade de que o usuário saiba que o robô está ouvindo.
+
+
+## Dificuldades Encontradas
+
+-- A princípio, o objetivo do projeto era além de fazer as interações por comandos de voz, fazer a integração com um robô, disponibilizado para a disciplina do Departamento de Ciência da Computação, que dançaria de acordo com os comandos apresentados. Porém, a nossa principal dificuldade foi fazer essa conexão do nosso código com o robô, porque solicitava conexão bluetooth mas dava erro de porta que não soubemos solucionar.
+
+-- Dificuldade de realizar a comunicação com o robô enquanto havia música tocando, pois inicialmente tivemos a ideia da função “act” conectar com a “sense”, porém aparecia erro de “loop” entre arquivos. Isso foi solucionado ao designar uma thread para reproduzir as músicas. 
+
+-- Dificuldade ao importar funções de outras pastas, a solução foi fazer uma pesquisa e criar um arquivo __init__.py.
+
+-- Dificuldade em encontrar uma API para fornecer uma lista de músicas para serem reproduzidas no projeto, isso foi solucionado criando nossa própria “api” de músicas por meio de uma pasta no projeto contendo músicas e playlist.
