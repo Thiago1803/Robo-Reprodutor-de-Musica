@@ -8,6 +8,7 @@ from view.act_talk import *
 pastaMusicas = "/home/thiago/Área de Trabalho/TRABALHOIA/model/musicas"
 pastaPlaylists = "/home/thiago/Área de Trabalho/TRABALHOIA/model/playlists"
 musicaPausada = False
+musicaParada = False
 
 
 # Envia mensagens de erro ou de despedida para o robô falar
@@ -38,7 +39,9 @@ def verificarMusicaPausada():
 #A primeira palavra que foi ouvida será o nome do robô e a segunda será o comando
 
 def menuSemMusica(textoEntendido):
+    global musicaParada
     if("desligar" not in textoEntendido and "Desligar" not in textoEntendido):
+        musicaParada = False
         # Busca uma determinada musica para reproduzi-la
         if("tocar" in textoEntendido or "Tocar" in textoEntendido):
             if("todas" in textoEntendido or "Todas" in textoEntendido):
@@ -83,6 +86,7 @@ def buscarMusica(nome):
 
 
 def reproduzirPlaylist(nome):
+    global musicaParada
     if verificarPlaylist(pastaPlaylists) == 1:
         # Percorre todos os arquivos na pasta, reproduzindo a musica desejada caso for encontrada
         for arquivo in os.listdir(pastaPlaylists):
@@ -92,10 +96,11 @@ def reproduzirPlaylist(nome):
             if nome[0].lower() in caminho_playlist.lower():
                 if verificarPlaylist(caminho_playlist) == 1:
                     for arquivo in os.listdir(caminho_playlist):
-                        caminho_arquivo = os.path.join(caminho_playlist, arquivo)
-                        tocarMusica(caminho_arquivo)
-                        while(verificarMusicaTocando() or verificarMusicaPausada()):
-                            continue
+                        if(musicaParada == False):
+                            caminho_arquivo = os.path.join(caminho_playlist, arquivo)
+                            tocarMusica(caminho_arquivo)
+                            while(verificarMusicaTocando() or verificarMusicaPausada()):
+                                continue
                         
                 
                 break
@@ -104,13 +109,15 @@ def reproduzirPlaylist(nome):
 
 
 def reproduzirTodasMusicas():
+    global musicaParada
     if verificarPlaylist(pastaMusicas) == 1:
         # Percorre todos os arquivos na pasta, reproduzindo cada musica
         for arquivo in os.listdir(pastaMusicas):
-            caminho_arquivo = os.path.join(pastaMusicas, arquivo)
-            tocarMusica(caminho_arquivo)
-            while(verificarMusicaTocando() or verificarMusicaPausada()):
-                continue
+            if(musicaParada == False):
+                caminho_arquivo = os.path.join(pastaMusicas, arquivo)
+                tocarMusica(caminho_arquivo)
+                while(verificarMusicaTocando() or verificarMusicaPausada()):
+                    continue
 
 
 
@@ -118,6 +125,7 @@ def reproduzirTodasMusicas():
 
 def menuMusicaTocando(textoEntendido):
     global musicaPausada
+    global musicaParada
     
     if("parar" not in textoEntendido and "Parar" not in textoEntendido):
         # Se uma musica estiver tocando, ela será pausada
@@ -134,6 +142,7 @@ def menuMusicaTocando(textoEntendido):
                 musicaPausada = False
 
     else:
+        musicaParada = True
         pararMusica()
         musicaPausada = False
 
