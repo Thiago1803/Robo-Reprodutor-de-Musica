@@ -1,4 +1,4 @@
-import beepy as beep
+#import beepy as beep
 import json
 from controller.think_music import *
 import speech_recognition as sr
@@ -42,7 +42,7 @@ def menuSentir():
             if(verificarMusicaTocando() or verificarMusicaPausada()):
                 volume(0.2)
                 print("beep")
-                beep.beep(1)
+                #beep.beep(1)
 
                 comando = speech_to_text("Fale algo, estou ouvindo com a musica tocando...")
                 controle = 0
@@ -56,7 +56,7 @@ def menuSentir():
                         
                 if((len(comando)==0) or (controle==0)):
                     print("beep")
-                    beep.beep(3)
+                    #beep.beep(3)
                 else:
                     menuMusicaTocando(comando)
 
@@ -64,7 +64,7 @@ def menuSentir():
 
             else:
                 print("beep")
-                beep.beep(1)
+                #beep.beep(1)
 
                 comando = speech_to_text("Fale algo, estou ouvindo sem musica tocando...")
                 controle = 0
@@ -78,6 +78,6 @@ def menuSentir():
                         
                 if((len(comando)==0) or (controle==0)):
                     print("beep")
-                    beep.beep(3)
+                    #beep.beep(3)
                 else:
                     menuSemMusica(comando)

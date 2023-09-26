@@ -5,7 +5,10 @@ from view.act_music import *
 from view.act_talk import *
 
 # Pasta do projeto com as musicas
-pasta = "/home/thiago/Área de Trabalho/TRABALHOIA/model/musicas"
+pasta = "C:/Users/ricar/Documents/cpp/periodo 6/ia/TRABALHOIA/model/musicas"
+pastaPlaylistInfantil = "C:/Users/ricar/Documents/cpp/periodo 6/ia/TRABALHOIA/model/playlist infantil"
+pastaPlaylistFesta = "C:/Users/ricar/Documents/cpp/periodo 6/ia/TRABALHOIA/model/playlist festa"
+pastaPlaylistTriste = "C:/Users/ricar/Documents/cpp/periodo 6/ia/TRABALHOIA/model/playlist triste"
 musicaPausada = False
 
 
@@ -29,7 +32,6 @@ def verificarMusicaTocando():
 
 def verificarMusicaPausada():
     global musicaPausada
-
     return musicaPausada
 
 
@@ -63,13 +65,13 @@ def menuSemMusica(textoEntendido):
     
 
 def buscarMusica(nome):
-    if verificarPlaylist(pastaMusicas) == 1:
+    if verificarPlaylist(pasta) == 1:
         #Variavel de controle para indicar se a musica foi encontrada ou nao
         musicaIniciou = False
 
         # Percorre todos os arquivos na pasta, reproduzindo a musica desejada caso for encontrada
-        for arquivo in os.listdir(pastaMusicas):
-            caminho_arquivo = os.path.join(pastaMusicas, arquivo)
+        for arquivo in os.listdir(pasta):
+            caminho_arquivo = os.path.join(pasta, arquivo)
             nome_arquivo, extensao= os.path.splitext(caminho_arquivo)
 
             # Transforma ambas strings em palavras com letras minusculas e compara se existe um arquivo com o nome informado
