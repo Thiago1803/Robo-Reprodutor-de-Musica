@@ -5,17 +5,17 @@ from view.act_music import *
 from view.act_talk import *
 
 # Pasta do projeto com as musicas
-pasta = "/home/thiago/Área de Trabalho/TRABALHOIA/model/musicas"
+pastaPlaylistInfantil = "C:/Users/User/Desktop/TRABALHO IA/TRABALHOIA/model/playlist infantil"
+pastaPlaylistFesta = "C:/Users/User/Desktop/TRABALHO IA/TRABALHOIA/model/playlist festa"
+pastaPlaylistTriste = "C:/Users/User/Desktop/TRABALHO IA/TRABALHOIA/model/playlist triste/titanic.mpeg"
+pastaMusicas = "C:/Users/User/Desktop/TRABALHO IA/TRABALHOIA/model/musicas"
+pastaPlaylistAtual = None
 musicaPausada = False
-
-
 
 
 # Envia mensagens de erro ou de despedida para o robô falar
 def menuParaMensagens(mensagem):
     falarMensagens(mensagem)
-
-
 
 
 # Verifica se a pasta de musicas esta vazia
@@ -38,10 +38,9 @@ def verificarMusicaPausada():
 
 
 
-
-
 #MENU COM TRATAMENTO PARA OS COMANDOS QUANDO NÃO ESTA TOCANDO NENHUMA MUSICA
 #A primeira palavra que foi ouvida será o nome do robô e a segunda será o comando
+
 def menuSemMusica(textoEntendido):
     if("desligar" not in textoEntendido and "Desligar" not in textoEntendido):
         # Busca uma determinada musica para reproduzi-la
@@ -51,22 +50,30 @@ def menuSemMusica(textoEntendido):
             musica = [separator.join(textoEntendido)] #concatena todas as palavras da lista
             buscarMusica(musica)
 
-        # Reproduz a playlist inteira
-        elif("reproduzir" in textoEntendido or "Reproduzir" in textoEntendido):
-            threading.Thread(target=reproduzirPlaylist).start()
+        # Reproduz a playlist infantil
+        elif("reproduzir playlist infantil" in textoEntendido or "infantil" in textoEntendido):
+            threading.Thread(target=reproduzirPlaylist, args=(pastaPlaylistInfantil,)).start()  # Passar a pasta como argumento
+
+        # Reproduz a playlist festa
+        elif("reproduzir playlist festa" in textoEntendido or "festa" in textoEntendido):
+            threading.Thread(target=reproduzirPlaylist, args=(pastaPlaylistFesta,)).start()  # Passar a pasta como argumento
+
+        # Reproduz a playlist triste
+        elif("reproduzir playlist triste" in textoEntendido or "triste" in textoEntendido):
+            threading.Thread(target=reproduzirPlaylist, args=(pastaPlaylistTriste,)).start()  # Passar a pasta como argumento
     else:
         menuParaMensagens("Desligando... Até mais!")
 
-
+    
 
 def buscarMusica(nome):
-    if verificarPlaylist(pasta) == 1:
+    if verificarPlaylist(pastaMusicas) == 1:
         #Variavel de controle para indicar se a musica foi encontrada ou nao
         musicaIniciou = False
 
         # Percorre todos os arquivos na pasta, reproduzindo a musica desejada caso for encontrada
-        for arquivo in os.listdir(pasta):
-            caminho_arquivo = os.path.join(pasta, arquivo)
+        for arquivo in os.listdir(pastaMusicas):
+            caminho_arquivo = os.path.join(pastaMusicas, arquivo)
             nome_arquivo, extensao= os.path.splitext(caminho_arquivo)
 
             # Transforma ambas strings em palavras com letras minusculas e compara se existe um arquivo com o nome informado
@@ -80,8 +87,11 @@ def buscarMusica(nome):
             musicaIniciou = False
     
 
+def reproduzirPlaylist(pasta):
 
-def reproduzirPlaylist():
+    global pastaPlaylistAtual  # Atualizando a variável global
+    pastaPlaylistAtual = pasta
+
     if verificarPlaylist(pasta) == 1:
         # Percorre todos os arquivos na pasta, reproduzindo cada musica
         for arquivo in os.listdir(pasta):
@@ -89,14 +99,6 @@ def reproduzirPlaylist():
             tocarMusica(caminho_arquivo)
             while(verificarMusicaTocando() or verificarMusicaPausada()):
                 continue
-                
-            
-
-
-
-
-
-
 
 def menuMusicaTocando(textoEntendido):
     global musicaPausada
@@ -114,6 +116,10 @@ def menuMusicaTocando(textoEntendido):
                 continuar()
                 time.sleep(0.2)
                 musicaPausada = False
+        
+        elif("pular" not in textoEntendido and "Pular" not in textoEntendido):
+               if musicaPausada == False:
+                pularMusica(pastaPlaylistAtual)
 
     else:
         pararMusica()
