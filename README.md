@@ -12,16 +12,16 @@ A arquitetura de software do robô se dá da seguinte maneira:
 
 **control.py**
 
-Em resumo, o código runRobot() simplesmente importa o módulo sense_music e chama a função speech_to_text() desse módulo. O que exatamente a função speech_to_text() faz depende da implementação dentro do módulo sense_music, que não está presente no código fornecido. Para entender completamente o que esse código faz, você precisaria examinar o conteúdo do módulo sense_music.
+Em resumo, a função runRobot() simplesmente importa o módulo sense_music e chama a função speech_to_text() desse módulo. A função speech_to_text() faz exatamente o que o nome diz, o usuário fala algo é ela transcreve as palavras para uma lista.
 
 
 **think_music.py**
 
-Ela define funções para buscar e reproduzir músicas, reproduzir playlists, controlar o estado da reprodução (pausar, continuar, parar), e lidar com comandos de voz para interagir com o programa. A variável global pastaPlaylistAtual é usada para rastrear qual playlist está sendo reproduzida no momento.
+Ela define funções para buscar e reproduzir músicas, reproduzir playlists, controlar o estado da reprodução (pausar, continuar, parar), e lidar com comandos de voz para interagir com o programa.
 
 ### MODEL
 
-Essa seção armazena as playlists e os áudio utilizados para a comunicação com o usuário
+Essa seção armazena as playlists, os áudio utilizados para a comunicação com o usuário e os comandos do robô.
 
 ### VIEW
 **act_music.py**
