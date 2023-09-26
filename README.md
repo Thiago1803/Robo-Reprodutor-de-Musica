@@ -5,12 +5,13 @@ O robô foi desenvolvido com a premissa de ajudar os pais no entretenimento de s
 ## Arquitetura de Software
 
 <p align="center">
-  <img src="https://github.com/Thiago1803/TRABALHOIA/assets/64339671/12455c20-a97e-44d2-829e-9972dea6eb67" alt="logo" width="220" height="500">
+  <img src="https://github.com/Thiago1803/TRABALHOIA/assets/64339671/9e028efc-87ec-434b-9df5-df006ef40f18" alt="logo" width="180" height="450">
 </p>
 
 ## Diagrama de classes
 
-![ClassesIA](https://github.com/Thiago1803/TRABALHOIA/assets/64339671/d6f69675-248c-4b12-a3bf-86145ac25b0b)
+
+![ClassesIA2](https://github.com/Thiago1803/TRABALHOIA/assets/64339671/d8296ab7-a689-4efd-a796-a4e1022c16a8)
 
 
 ### CONTROLLER
