@@ -27,18 +27,3 @@ def alterarVolume(volume):
 
 def musicaTocando():
     return pygame.mixer.music.get_busy()
-
-def pularMusica(pasta):
-    # Pule para a próxima música na pasta da playlist atual
-    lista_musicas = os.listdir(pasta)
-    musica_atual = pygame.mixer.music.get_busy()
-    
-    if musica_atual:
-        pygame.mixer.music.stop()
-    
-    # Encontre a próxima música na lista
-    if lista_musicas:
-        index_musica_atual = lista_musicas.index(os.path.basename(musica_atual))
-        if index_musica_atual < len(lista_musicas) - 1:
-            proxima_musica = os.path.join(pasta, lista_musicas[index_musica_atual + 1])
-            tocarMusica(proxima_musica)

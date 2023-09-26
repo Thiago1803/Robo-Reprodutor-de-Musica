@@ -5,10 +5,8 @@ from view.act_music import *
 from view.act_talk import *
 
 # Pasta do projeto com as musicas
-pasta = "C:/Users/ricar/Documents/cpp/periodo 6/ia/TRABALHOIA/model/musicas"
-pastaPlaylistInfantil = "C:/Users/ricar/Documents/cpp/periodo 6/ia/TRABALHOIA/model/playlist infantil"
-pastaPlaylistFesta = "C:/Users/ricar/Documents/cpp/periodo 6/ia/TRABALHOIA/model/playlist festa"
-pastaPlaylistTriste = "C:/Users/ricar/Documents/cpp/periodo 6/ia/TRABALHOIA/model/playlist triste"
+pastaMusicas = "/home/thiago/Área de Trabalho/TRABALHOIA/model/musicas"
+pastaPlaylists = "/home/thiago/Área de Trabalho/TRABALHOIA/model/playlists"
 musicaPausada = False
 
 
@@ -20,7 +18,7 @@ def menuParaMensagens(mensagem):
 # Verifica se a pasta de musicas esta vazia
 def verificarPlaylist(pasta):
     if not os.listdir(pasta):
-        menuParaMensagens("Playlist sem músicas!")
+        menuParaMensagens("Playlist inexistente ou sem músicas!")
         return -1
     
     return 1
@@ -43,35 +41,33 @@ def menuSemMusica(textoEntendido):
     if("desligar" not in textoEntendido and "Desligar" not in textoEntendido):
         # Busca uma determinada musica para reproduzi-la
         if("tocar" in textoEntendido or "Tocar" in textoEntendido):
-            textoEntendido = textoEntendido[1:] #ignora "tocar" da lista, sobrando nome do cantor/banda e musica
+            if("todas" in textoEntendido or "Todas" in textoEntendido):
+                threading.Thread(target=reproduzirTodasMusicas).start()
+            else:
+                textoEntendido = textoEntendido[1:] #ignora "tocar" da lista, sobrando nome do cantor/banda e musica
+                separator = '' #indica como irá separar as palavras da lista, no caso é sem espaço
+                musica = [separator.join(textoEntendido)] #concatena todas as palavras da lista
+                buscarMusica(musica)
+
+        elif(("reproduzir" in textoEntendido or "Reproduzir" in textoEntendido) and ("playlist" in textoEntendido or "Playlist" in textoEntendido)):
+            textoEntendido = textoEntendido[2:] #ignora "reproduzir" e "playlist" da lista, sobrando nome da playlist
             separator = '' #indica como irá separar as palavras da lista, no caso é sem espaço
-            musica = [separator.join(textoEntendido)] #concatena todas as palavras da lista
-            buscarMusica(musica)
-
-        # Reproduz a playlist infantil
-        elif("reproduzir playlist infantil" in textoEntendido or "infantil" in textoEntendido):
-            threading.Thread(target=reproduzirPlaylist, args=(pastaPlaylistInfantil,)).start()  # Passar a pasta como argumento
-
-        # Reproduz a playlist festa
-        elif("reproduzir playlist festa" in textoEntendido or "festa" in textoEntendido):
-            threading.Thread(target=reproduzirPlaylist, args=(pastaPlaylistFesta,)).start()  # Passar a pasta como argumento
-
-        # Reproduz a playlist triste
-        elif("reproduzir playlist triste" in textoEntendido or "triste" in textoEntendido):
-            threading.Thread(target=reproduzirPlaylist, args=(pastaPlaylistTriste,)).start()  # Passar a pasta como argumento
+            playlist = [separator.join(textoEntendido)] #concatena todas as palavras da lista
+            threading.Thread(target=reproduzirPlaylist, args=playlist).start()  # Passar a pasta como argumento
+        
     else:
         menuParaMensagens("Desligando... Até mais!")
 
     
 
 def buscarMusica(nome):
-    if verificarPlaylist(pasta) == 1:
+    if verificarPlaylist(pastaMusicas) == 1:
         #Variavel de controle para indicar se a musica foi encontrada ou nao
         musicaIniciou = False
 
         # Percorre todos os arquivos na pasta, reproduzindo a musica desejada caso for encontrada
-        for arquivo in os.listdir(pasta):
-            caminho_arquivo = os.path.join(pasta, arquivo)
+        for arquivo in os.listdir(pastaMusicas):
+            caminho_arquivo = os.path.join(pastaMusicas, arquivo)
             nome_arquivo, extensao= os.path.splitext(caminho_arquivo)
 
             # Transforma ambas strings em palavras com letras minusculas e compara se existe um arquivo com o nome informado
@@ -85,18 +81,40 @@ def buscarMusica(nome):
             musicaIniciou = False
     
 
-def reproduzirPlaylist(pasta):
 
-    global pastaPlaylistAtual  # Atualizando a variável global
-    pastaPlaylistAtual = pasta
+def reproduzirPlaylist(nome):
+    if verificarPlaylist(pastaPlaylists) == 1:
+        # Percorre todos os arquivos na pasta, reproduzindo a musica desejada caso for encontrada
+        for arquivo in os.listdir(pastaPlaylists):
+            caminho_playlist = os.path.join(pastaPlaylists, arquivo)
 
-    if verificarPlaylist(pasta) == 1:
+            # Transforma ambas strings em palavras com letras minusculas e compara se existe um arquivo com o nome informado
+            if nome[0].lower() in caminho_playlist.lower():
+                if verificarPlaylist(caminho_playlist) == 1:
+                    for arquivo in os.listdir(caminho_playlist):
+                        caminho_arquivo = os.path.join(caminho_playlist, arquivo)
+                        tocarMusica(caminho_arquivo)
+                        while(verificarMusicaTocando() or verificarMusicaPausada()):
+                            continue
+                        
+                
+                break
+    else:
+        menuParaMensagens("Você não criou nenhuma playlist!")
+
+
+def reproduzirTodasMusicas():
+    if verificarPlaylist(pastaMusicas) == 1:
         # Percorre todos os arquivos na pasta, reproduzindo cada musica
-        for arquivo in os.listdir(pasta):
-            caminho_arquivo = os.path.join(pasta, arquivo)
+        for arquivo in os.listdir(pastaMusicas):
+            caminho_arquivo = os.path.join(pastaMusicas, arquivo)
             tocarMusica(caminho_arquivo)
             while(verificarMusicaTocando() or verificarMusicaPausada()):
                 continue
+
+
+
+
 
 def menuMusicaTocando(textoEntendido):
     global musicaPausada
@@ -114,10 +132,6 @@ def menuMusicaTocando(textoEntendido):
                 continuar()
                 time.sleep(0.2)
                 musicaPausada = False
-        
-        elif("pular" in textoEntendido or "Pular" in textoEntendido):
-               if musicaPausada == False:
-                pularMusica(pastaPlaylistAtual)
 
     else:
         pararMusica()
