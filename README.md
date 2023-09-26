@@ -4,6 +4,10 @@ O robô “Eva” foi desenvolvido com a premissa de ajudar os pais no entreteni
 
 Com isso, planejamos nosso robô de forma que tenha a habilidade de ouvir o usuário, o qual poderá pedir uma música em específico para ser tocada, uma playlist ou então todas as músicas baixadas. A partir disso, o robô começará a reproduzir o que foi pedido, caso seja encontrado.
 
+<p align="center">
+  <img src="https://github.com/Thiago1803/TRABALHOIA/assets/108815646/83394d59-ed12-4bdd-a698-fc90ec0a62c8" alt="logo">
+</p>
+
 
 ## Arquitetura de Software
 
