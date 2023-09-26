@@ -1,8 +1,8 @@
 # Trabalho de Inteligência Artificial
 
-O robô foi desenvolvido com aa premissa de ajudar os pais no entretenimento de seus filhos. O robô possuí a habilidade de conversar com o usuário e pode aceitar pedidos para reprodução de músicas.
+O robô foi desenvolvido com a premissa de ajudar os pais no entretenimento de seus filhos. O robô possuí a habilidade de conversar com o usuário e pode aceitar pedidos para reprodução de músicas.
 
-A arquitetura se dá da seguinte maneira: 
+A arquitetura de software do robô se dá da seguinte maneira: 
 
 <p align="center">
   <img src="https://github.com/Thiago1803/TRABALHOIA/assets/64339671/12455c20-a97e-44d2-829e-9972dea6eb67" alt="logo" width="220" height="500">
