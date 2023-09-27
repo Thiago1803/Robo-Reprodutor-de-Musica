@@ -19,9 +19,6 @@ def falarMensagens(mensagem):
     # Salva o áudio no caminho especificado
     tts.save(caminhoCompleto)
 
-    # Inicializa o mixer de áudio do pygame
-    pygame.mixer.init()
-
     # Carrega o arquivo de áudio e reproduz
     pygame.mixer.music.load(caminhoCompleto)
     pygame.mixer.music.play()
@@ -29,6 +26,3 @@ def falarMensagens(mensagem):
     # Aguarda até que a reprodução termine
     while pygame.mixer.music.get_busy():
         pygame.time.Clock().tick(10)  # Pausa por um curto período de tempo
-
-    # Exclui o arquivo temporário
-    pygame.mixer.quit()

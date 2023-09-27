@@ -14,7 +14,7 @@ def finalizarReprodutorMusica():
 
 
 
-falarMensagens("Olá, o que deseja?")
 inicializarReprodutorMusica()
+falarMensagens("Olá, o que deseja?")
 menuSentir()
 finalizarReprodutorMusica()
